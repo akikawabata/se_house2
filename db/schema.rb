@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_08_05_155312) do
+ActiveRecord::Schema.define(version: 2024_08_06_015717) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,4 +25,28 @@ ActiveRecord::Schema.define(version: 2024_08_05_155312) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "categories_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "category_sound_effects", force: :cascade do |t|
+    t.integer "sound_effect_id_id", null: false
+    t.integer "category_id_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id_id"], name: "index_category_sound_effects_on_category_id_id"
+    t.index ["sound_effect_id_id"], name: "index_category_sound_effects_on_sound_effect_id_id"
+  end
+
+  create_table "sound_effects", force: :cascade do |t|
+    t.text "sound_effect_name"
+    t.text "sound_effect_details"
+    t.boolean "is_active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "category_sound_effects", "sound_effect_ids"
 end

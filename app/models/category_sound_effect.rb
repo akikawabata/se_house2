@@ -1,0 +1,2 @@
+class CategorySoundEffect < ApplicationRecord
+end
