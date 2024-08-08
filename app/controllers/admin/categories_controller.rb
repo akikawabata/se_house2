@@ -3,9 +3,11 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def new
+    @categorie = Categorie.new
   end
 
   def create
+    
   end
 
   def show
