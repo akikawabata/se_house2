@@ -2,6 +2,12 @@
 
 class Admin::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+    before_action :configure_sign_in_params, only: [:create]
+    before_action :configure_permitted_parameters, if: :devise_controller? 
+  # before_action :authenticate_user!に対してunless: :admin_controller?でfalseを返す場合、つまり現在のコントローラーが Admin 名前空間の下にない場合にのみエンドユーザー認証が求められます。
+  #上記に「Public::」をつけることで、ruteで使用したscope module: :publicが適用され、URLパスからはpublicが除外されます。したがって、今までと同様にアクセスできるようになります。
+  #未ログイン認証状態でトップページ以外の画面にアクセスしても、ログイン画面へリダイレクト。 また、ログイン認証が済んでいる場合には全てのページにアクセスすることができます
+  #before_actionメソッドは最初にbefore_actionメソッドが実行される
 
   # GET /resource/sign_in
   # def new
@@ -14,9 +20,10 @@ class Admin::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def after_sign_out_path_for(resource_or_scope)
+    flash[:notice] = "ログアウトしました"
+    root_path
+  end
 
   # protected
 

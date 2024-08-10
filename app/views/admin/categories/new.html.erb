@@ -1,2 +1,8 @@
-<h1>Admin::Categories#new</h1>
-<p>Find me in app/views/admin/categories/new.html.erb</p>
+<h1>カテゴリ追加</h1>
+<!-- form_with部分 -->
+<%= form_with model: Categorie.new do |f| %>
+  <h4>タイトル</h4>
+  <%= f.text_field :categories_name %>
+
+  <%= f.submit 'カテゴリ追加' %>
+<% end %>
