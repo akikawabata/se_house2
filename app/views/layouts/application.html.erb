@@ -13,8 +13,13 @@
   <body>
       <header>
     <% if admin_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+
+      
+
+      <li class="nav-item py-2 py-sm-0">
+       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link disabled" %>
+
+
       </li>
     <% else %>
       <li>
