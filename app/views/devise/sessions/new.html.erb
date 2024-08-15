@@ -1,5 +1,5 @@
-<h2>Log in</h2>
-
+<%- if request.path.match(/\/admin(\/)?/) %>
+  <h4><b>管理者ログイン</b></h4>
 <%= form_with model: @admin, url: admin_session_path do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -22,5 +22,6 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
+ <% end %><!--f-->
 
 <%= render "devise/shared/links" %>

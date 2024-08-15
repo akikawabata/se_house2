@@ -15,14 +15,8 @@ class Admin::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
-
-  # DELETE /resource/sign_out
-  def after_sign_out_path_for(resource_or_scope)
-    flash[:notice] = "ログアウトしました"
-    root_path
+  def create
+    super
   end
 
   # protected
@@ -31,4 +25,11 @@ class Admin::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  def after_sign_in_path_for(resource)
+    flash[:notice] = "管理者としてログインしました"
+    admin_sound_effects_path
+  end
+  def configure_sign_in_params
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
+  end
 end
