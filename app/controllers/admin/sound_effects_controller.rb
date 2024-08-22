@@ -19,4 +19,11 @@ class Admin::SoundEffectsController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def soundeffect_params
+    params.require(:soundeffect).permit(:sound_effect_name,:sound_effect_details,:is_active,:file)
+  end
+
 end

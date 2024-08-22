@@ -1,16 +1,17 @@
 class Admin::CategoriesController < ApplicationController
   def index
+    @categories = Category.all
   end
 
   def new
-    @categorie = Categorie.new
+    @category = Category.new
   end
 
   def create
       # １.&2. データを受け取り新規登録するためのインスタンス作成
-    categorie = Categorie.new(categorie_params)
+    category = Category.new(category_params)
       # 3. データをデータベースに保存するためのsaveメソッド実行
-    categorie.save
+    category.save
       # 4. トップ画面へリダイレクト
     redirect_to 'admin_categories_path'
   end
@@ -26,7 +27,7 @@ class Admin::CategoriesController < ApplicationController
 
   private
 
-  def categorie_params
-    params.require(:categorie).permit(:categories_name)
+  def category_params
+    params.require(:category).permit(:categories_name)
   end
 end

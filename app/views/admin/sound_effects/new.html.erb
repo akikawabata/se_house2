@@ -1,2 +1,8 @@
 <h1>Admin::SoundEffects#new</h1>
-<p>Find me in app/views/admin/sound_effects/new.html.erb</p>
+<%= form_for @soundeffect do |f| %>
+
+  <%= f.label :file %>
+  <%= f.file_field :file , :size => 140 %>
+
+  <%= f.submit "追加" %>
+<% end %>
