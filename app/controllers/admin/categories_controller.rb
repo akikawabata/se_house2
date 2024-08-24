@@ -1,7 +1,4 @@
 class Admin::CategoriesController < ApplicationController
-  def index
-    @categories = Category.all
-  end
 
   def new
     @category = Category.new
@@ -13,13 +10,19 @@ class Admin::CategoriesController < ApplicationController
       # 3. データをデータベースに保存するためのsaveメソッド実行
     category.save
       # 4. トップ画面へリダイレクト
-    redirect_to 'admin_categories_path'
+    redirect_to admin_categories_path,  notice: "カテゴリを追加しました。"
   end
+
+
 
   def show
   end
 
   def edit
+  end
+
+  def index
+    @categories = Category.all
   end
 
   def update

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :sound_effects
     resources :mypage, only: [:show, :edit, :update]
     resource :admins, only: [:show, :edit, :update]
-    post 'categories/:id' => 'categories#show'
+    post 'categories/:id' => 'categories#create'
   end
   resources :categories, only: [:index]
   resources :regulations, only: [:show]
