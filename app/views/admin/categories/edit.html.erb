@@ -1,2 +1,8 @@
-<h1>Admin::Categories#edit</h1>
-<p>Find me in app/views/admin/categories/edit.html.erb</p>
+<h1>カテゴリ名編集</h1>
+  <p><%= flash[:notice] %></p>
+
+<%= form_with model: @category, url:admin_category_path do |f| %>
+ <%= f.text_field :categories_name %>
+ <%= f.submit '保存' %>
+ 
+<% end %>

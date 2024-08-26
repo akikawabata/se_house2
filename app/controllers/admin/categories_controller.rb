@@ -1,7 +1,7 @@
 class Admin::CategoriesController < ApplicationController
 
   def new
-    @category = Category.new
+    @categories = Category.new
   end
 
   def create
@@ -19,6 +19,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def edit
+    @category = Category.find(params[:id])
   end
 
   def index
@@ -26,6 +27,9 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def update
+    category = Category.find(params[:id])
+    category.update(category_params)
+    redirect_to admin_category_path(category.id)  
   end
 
   private
