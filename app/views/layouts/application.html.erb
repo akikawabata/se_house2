@@ -12,24 +12,29 @@
 
   <body>
     <header>
-    <% if admin_signed_in? %>
-      <li class="nav-item py-2 py-sm-0">
-       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link disabled" %>
-      </li>
-      <li class="nav-item py-2 py-sm-0">
-       <%= link_to "カテゴリ追加", new_admin_category_path, class: "nav-link disabled" %>
-      </li>
-      <li class="nav-item py-2 py-sm-0">
-       <%= link_to "効果音追加", new_admin_sound_effect_path, class: "nav-link disabled" %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_admin_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_admin_session_path %>
-      </li>
-    <% end %>
+      <%- if request.path.match(/\/admin(\/)?/) %>
+      <% if admin_signed_in? %>
+        <li class="nav-item py-2 py-sm-0">
+         <%= link_to "カテゴリ一覧", admin_categories_path, class: "nav-link disabled" %>
+        </li>
+        <li class="nav-item py-2 py-sm-0">
+         <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link disabled" %>
+        </li>
+        <li class="nav-item py-2 py-sm-0">
+         <%= link_to "カテゴリ追加", new_admin_category_path, class: "nav-link disabled" %>
+        </li>
+        <li class="nav-item py-2 py-sm-0">
+         <%= link_to "効果音追加", new_admin_sound_effect_path, class: "nav-link disabled" %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "新規登録", new_admin_registration_path %>
+        </li>
+        <li>
+          <%= link_to "ログイン", new_admin_session_path %>
+        </li>
+      <% end %>
+      <% end %>
     </header>
     <%= yield %>
   </body>
