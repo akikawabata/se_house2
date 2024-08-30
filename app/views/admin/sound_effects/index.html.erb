@@ -1,7 +1,7 @@
 <h1>効果音一覧</h1>
-  <% @soundeffect.each do |t| %>
-    <div class="soundeffect">
-      <%= t.body %>
+  <% @sound_effect.each do |t| %>
+    <div class="sound_effect">
+      <%= t.sound_effect_name %>
       #ここから追記
 　　　　<audio src= "<%= "#{t.file}" %>" controls="">
          <a src="<%= "#{t.file}" %>">ダウンロード</a>
