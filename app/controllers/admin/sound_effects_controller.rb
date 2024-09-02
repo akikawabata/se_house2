@@ -1,5 +1,6 @@
 class Admin::SoundEffectsController < ApplicationController
   def index
+    @sound_effects 
   end
 
   def new
