@@ -23,8 +23,8 @@ class Admin::SoundEffectsController < ApplicationController
 
   private
 
-  def soundeffect_params
-    params.require(:soundeffect).permit(:sound_effect_name,:sound_effect_details,:is_active,:file)
+  def sound_effect_params
+    params.require(:sound_effect).permit(:sound_effect_name,:sound_effect_details,:is_active,:file)
   end
 
 end
